@@ -1,0 +1,37 @@
+# a workflow to backup files and directories, it runs on 'push' to main or manually.
+
+name: backup CI workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow-dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # i tagged my image with 'latest' and 'commit SHA' for better versioning
+      - name: Build docker image
+        run: docker build -t mazivazvose/backup-files:latest -t mazivazvose/backup-files:${{ github.sha }} .
+
+      # i retrieve a list of docker images to confirm my image was built
+      - name: List images
+        run: docker images
+
+      # i then push both images to docker hub
+      - name: Push docker image
+        run: |
+          docker push mazivazvose/backup-files:latest
+          docker push mazivazvose/backup-files:${{ github.sha }}
