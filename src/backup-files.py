@@ -19,6 +19,12 @@ def backup_file(path_to_backup: Path, destination_dir: Path):
     
     try:
         
+        # in a case where no path_to_back provided
+        if path_to_backup is None:
+            print('No file provided')
+            logging.error('No file provided')
+            return
+
         # i check if the entered path for backup exists
         if not path_to_backup.exists():
             print(f'"{path_to_backup.name}" does not exist')
@@ -32,7 +38,7 @@ def backup_file(path_to_backup: Path, destination_dir: Path):
             
             # i alert the user that they can not backup empty files and immediately terminate the operation
             if path_to_backup.stat().st_size == 0:      # checking the file size
-                print(f'Can not backup empty filess')
+                print(f'Can not backup empty files')
                 logging.error(f'Can not backup empty files')
                 return
 
@@ -71,16 +77,13 @@ def backup_file(path_to_backup: Path, destination_dir: Path):
 
 def main():
     parser = argparse.ArgumentParser(description='a script to backup a file or directory')
-    parser.add_argument('path_to_backup', type=str, help='path of file or directory to be backed up')
+    parser.add_argument('path_to_backup', nargs='?', default=None, help='path of file or directory to be backed up')
     parser.add_argument('destination', nargs='?', default='.', type=str, help='name of destination folder (default is current working directory)')
     args = parser.parse_args()
 
-    path_to_backup = Path(args.path_to_backup).resolve()
+    path_to_backup = Path(args.path_to_backup).resolve() if args.path_to_backup else None
     destination_dir = Path(args.destination).resolve()
     backup_file(path_to_backup, destination_dir)
 
 if __name__ == '__main__':
-    main() 
- 
-
-      
+    main()
