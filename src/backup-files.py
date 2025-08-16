@@ -1,4 +1,4 @@
-# This is a script to backup files using shutil`
+# This is a script to backup files using shutil
 
 from pathlib import Path
 import argparse
@@ -29,11 +29,24 @@ def backup_file(path_to_backup: Path, destination_dir: Path):
         if path_to_backup.is_file():
             root_dir = path_to_backup.parent
             base_dir = path_to_backup.name
+            
+            # i alert the user that they can not backup empty files and immediately terminate the operation
+            if path_to_backup.stat().st_size == 0:      # checking the file size
+                print(f'Can not backup empty filess')
+                logging.error(f'Can not backup empty files')
+                return
 
         # I check if the 'path_to_backup' is a directory
         elif path_to_backup.is_dir():
             root_dir = path_to_backup.parent
             base_dir = path_to_backup.name
+            
+            # i notify the user that they can not backup an empty directory and immediately terminate the operation
+            if not any(path_to_backup.iterdir()):
+                print(f'cannot back up empty directories')
+                logging.error(f'cannot backup empty directories')
+                return
+
         
         # I alert the user that the file path they entered is invalid
         else:
