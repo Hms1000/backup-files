@@ -17,6 +17,4 @@ COPY src/ .
 #VOLUME ["/app/data"]
 
 # i execute the script
-ENTRYPOINT ["python3", "backup-files.py"]
-
-CMD []
+CMD ["sh", "-c", "python3 backup-files.py ${BACKUP_PATH:-}"]
