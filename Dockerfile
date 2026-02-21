@@ -39,7 +39,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip
 COPY --from=builder /build/wheels /wheels
 
 # install wheels
-RUN pip install --no-cacher-dir /wheels*
+RUN pip install --no-cache-dir /wheels*
 
 # ensure that the files are not owned by root
 USER --chown=appuser:appuser
@@ -51,4 +51,4 @@ HEALTHCHECK --interval=30s --timeout=5s --retries=3 --start-time=40s
 EXPOSE 8000
 
 # i execute the script
-CMD ["python3", "backu=p-files.py"]
+CMD ["python3", "backup-files.py"]
