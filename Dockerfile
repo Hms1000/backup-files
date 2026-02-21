@@ -10,7 +10,7 @@ RUN apt-get update && apt-get upgrade -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/* 
 
-# i setup working directory
+# I setup working directory
 WORKDIR /build
 
 # upgrade pip
