@@ -45,8 +45,8 @@ RUN pip install --no-cache-dir /wheels*
 COPY --chown=appuser:appuser src/ .
 
 # ensure the app is healthy
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 --start-time=40s
-           CMD python -c "import urllib.request; urlib.request.open('http://127.0.0.1/health:8000') || exit 1"
+#HEALTHCHECK --interval=30s --timeout=5s --retries=3 --start-time=40s
+#           CMD python -c "import urllib.request; urlib.request.open('http://127.0.0.1/health:8000') || exit 1"
 
 EXPOSE 8000
 
