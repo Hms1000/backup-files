@@ -30,7 +30,7 @@ FROM python:3.12-slim As runner
 WORKDIR /app
 
 # upgrade pip
-RUN pip install --no-cacher-dir --upgrade pip
+RUN python -m pip install --no-cache-dir --upgrade pip
 
 #create user
 RUN useradd -u 1000 -m appuser
