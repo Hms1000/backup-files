@@ -50,5 +50,8 @@ COPY --chown=appuser:appuser src/ .
 
 EXPOSE 8000
 
+# the container will stop running as root and will run as appuser now
+USER appuser
+
 # i execute the script
 CMD ["python3", "backup-files.py"]
