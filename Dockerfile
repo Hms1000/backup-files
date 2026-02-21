@@ -41,8 +41,8 @@ COPY --from=builder /build/wheels /wheels
 # install wheels
 RUN pip install --no-cache-dir /wheels*
 
-# ensure that the files are not owned by root
-USER --chown=appuser:appuser
+# copy source code and ensure that the files are not owned by root
+COPY --chown=appuser:appuser src/ .
 
 # ensure the app is healthy
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 --start-time=40s
