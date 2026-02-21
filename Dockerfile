@@ -29,11 +29,11 @@ FROM python:3.12-slim As runner
 # create working directory
 WORKDIR /app
 
+# create the user
+RUN useradd -u 1000 -m appuser
+
 # upgrade pip
 RUN python -m pip install --no-cache-dir --upgrade pip
-
-#create user
-RUN useradd -u 1000 -m appuser
 
 # handover wheels to runner
 COPY --from=builder /build/wheels /wheels
