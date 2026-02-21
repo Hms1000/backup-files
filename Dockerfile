@@ -1,5 +1,5 @@
 # i use a python baseline image
-FROM python:3.11-slim As builder
+FROM python:3.12-slim As builder
 
 # make sure that unnecessary meta data is not downloaded
 ENV PYTHONDONTWRITEBYTECODE=1 \
