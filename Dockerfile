@@ -14,7 +14,7 @@ RUN apt-get update && apt-get upgrade -y --no-install-recommends \
 WORKDIR /build
 
 # upgrade pip
-RUN python -c pip install --no-cacher-dir --upgrade pip
+RUN python -m pip install --no-cache-dir --upgrade pip
 
 #Copy requirements
 COPY requirements.txt .
