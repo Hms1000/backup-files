@@ -5,7 +5,7 @@ FROM python:3.12-slim As builder
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# get updated pacakges
+# get updated packages
 RUN apt-get update && apt-get upgrade -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/* 
