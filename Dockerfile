@@ -39,7 +39,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip
 COPY --from=builder /build/wheels /wheels
 
 # install wheels
-RUN pip install --no-cache-dir /wheels*
+RUN pip install --no-cache-dir /wheels/*.whl
 
 # copy source code and ensure that the files are not owned by root
 COPY --chown=appuser:appuser src/ .
