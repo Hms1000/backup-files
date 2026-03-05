@@ -20,3 +20,8 @@
 
 # Ownership of the files
 - I learned that `COPY --chown` gives the user ownership of the files, but the `USER` instruction is what actually tells the container to stop running as root and start running as that specific user.
+
+# Empty `requirements.txt` file error
+- At first my `requirements.txt` file was empty, so I kept on getting the error `ERROR: failed to build: failed to solve: process "/bin/sh -c pip install --no-cache-dir /wheels/*.whl" did not complete successfully: exit code: 1
+
+Error: Process completed with exit code 1.` when pushed to github. Upon tracking I discovered that pip wasn't finding wheels to install because there was no dependencies in the `requirements.txt` file
