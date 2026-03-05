@@ -1,1 +1,1 @@
-# I will add dependencies in this file as the script evolves.
+requests==2.31.0
