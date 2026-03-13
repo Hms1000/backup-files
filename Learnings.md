@@ -28,3 +28,8 @@ Error: Process completed with exit code 1.` when pushed to github. Upon tracking
 
 # uvicorn[standard]
 - I added `uvicorn[standard]` because it offers high perfomance unlike uvicorn alone
+
+# ERROR: failed to build: failed to solve: dockerfile parse error on line 49:HEALTHCHECK requires at least one argument
+- well this is giving me hard time I cant really figure out, why I'm gettng this error message.
+- everything looks on point, but I still get this error
+- I think I'm gonna have to look more closey because right now I cant see anything
