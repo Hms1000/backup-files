@@ -1,12 +1,12 @@
 # i use a python baseline image
-FROM python:3.12-slim As builder
+FROM python:3.12-slim AS builder
 
 # make sure that unnecessary meta data is not downloaded
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 # get updated packages
-RUN apt-get update && apt-get upgrade -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/* 
 
@@ -24,7 +24,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /build/wheels -r requirements
 
 
 # Runner stage
-FROM python:3.12-slim As runner
+FROM python:3.12-slim AS runner
 
 # create working directory
 WORKDIR /app
