@@ -25,3 +25,6 @@
 - At first my `requirements.txt` file was empty, so I kept on getting the error `ERROR: failed to build: failed to solve: process "/bin/sh -c pip install --no-cache-dir /wheels/*.whl" did not complete successfully: exit code: 1
 
 Error: Process completed with exit code 1.` when pushed to github. Upon tracking I discovered that pip wasn't finding wheels to install because there was no dependencies in the `requirements.txt` file
+
+# uvicorn[standard]
+- I added `uvicorn[standard]` because it offers high perfomance unlike uvicorn alone
