@@ -21,6 +21,6 @@ def post_backup(path_to_backup:str, destination: str):
     return {"status": "backup completed"}
 
 # simple healthcheck
-@app.get("/heath")
+@app.get("/health")
 def healthcheck():
     return {"status": "healthy"}
