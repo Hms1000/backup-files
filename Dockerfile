@@ -47,7 +47,7 @@ COPY --chown=appuser:appuser src/ .
 
 # ensure the app is healthy
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 --start-time=40s
-           CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"
+CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"       
                            
 EXPOSE 8000
 
