@@ -49,8 +49,8 @@ COPY --chown=appuser:appuser src/ .
 HEALTHCHECK --interval=30s \
             --timeout=5s --retries=3 \
             --start-period=40s \
-            CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"       
-                           
+            CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"
+
 EXPOSE 8000
 
 # the container will stop running as root and will run as appuser now
