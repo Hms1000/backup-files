@@ -24,7 +24,7 @@ jobs:
 
       # i tagged my image with 'latest' and 'commit SHA' for better versioning
       - name: Build docker image
-        run: docker build -t mazivazvose/backup-files:latest -t mazivazvose/backup-files:${{ github.sha }} .
+        run: docker build --no-ccahe -t mazivazvose/backup-files:latest -t mazivazvose/backup-files:${{ github.sha }} .
 
       # i retrieve a list of docker images to confirm my image was built
       - name: List images
