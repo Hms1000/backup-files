@@ -33,3 +33,5 @@ Error: Process completed with exit code 1.` when pushed to github. Upon tracking
 - well this is giving me hard time I cant really figure out, why I'm gettng this error message.
 - everything looks on point, but I still get this error
 - I think I'm gonna have to look more closey because right now I cant see anything
+- **finally**,  error solved. Docker was building the image from previously cached broken layers.
+- so I added the flag `--no-cache` to my workflow and the image was succecfully built
