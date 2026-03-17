@@ -77,7 +77,7 @@ def backup_file(path_to_backup: Path, destination_dir: Path):
 
 def main():
     parser = argparse.ArgumentParser(description='a script to backup a file or directory')
-    parser.add_argument('--path_to_backup', type=str default=None, help='path of file or directory to be backed up')
+    parser.add_argument('--path_to_backup', type=str, default=None, help='path of file or directory to be backed up')
     parser.add_argument('--destination', type=str, default='.', type=str, help='name of destination folder (default is current working directory)')
     args = parser.parse_args()
 
